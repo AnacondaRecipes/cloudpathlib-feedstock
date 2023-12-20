@@ -117,6 +117,9 @@ about:
   summary: pathlib.Path-style classes for interacting with files in different cloud storage services.
   license: MIT
   license_file: LICENSE
+  license_family: MIT
+  description: |
+    A Python library with classes that mimic pathlib.Path's interface for URIs from different cloud storage services.
   doc_url: https://cloudpathlib.drivendata.org/
   dev_url: https://github.com/drivendataorg/cloudpathlib
 
