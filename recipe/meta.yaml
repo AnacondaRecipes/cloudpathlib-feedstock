@@ -11,7 +11,7 @@ source:
   sha256: cdfcd35d46d529587d744154a0bdf962aca953b725c8784cd2ec478354ea63a3
 
 build:
-  number: 0
+  number: 1
   skip: true  # [py<37]
   script: {{ PYTHON }} -m pip install . --no-deps --no-build-isolation -vv
 
@@ -28,10 +28,10 @@ requirements:
 test:
   imports:
     - cloudpathlib
-  commands:
-    - pip check
   requires:
     - pip
+  commands:
+    - pip check
 
 outputs:
   - name: cloudpathlib
@@ -39,7 +39,6 @@ outputs:
   - name: cloudpathlib-azure
     requirements:
       host:
-        - pip
         - python
       run:
         - python
@@ -48,16 +47,15 @@ outputs:
     test:
       imports:
         - cloudpathlib
+      requires:
+        - pip
       commands:
         - pip check
         - python -c "from cloudpathlib.cloudpath import implementation_registry; implementation_registry['azure'].validate_completeness()"
-      requires:
-        - pip
 
   - name: cloudpathlib-gs
     requirements:
       host:
-        - pip
         - python
       run:
         - python
@@ -66,16 +64,15 @@ outputs:
     test:
       imports:
         - cloudpathlib
+      requires:
+        - pip
       commands:
         - pip check
         - python -c "from cloudpathlib.cloudpath import implementation_registry; implementation_registry['gs'].validate_completeness()"
-      requires:
-        - pip
 
   - name: cloudpathlib-s3
     requirements:
       host:
-        - pip
         - python
       run:
         - python
@@ -84,16 +81,15 @@ outputs:
     test:
       imports:
         - cloudpathlib
+      requires:
+        - pip
       commands:
         - pip check
         - python -c "from cloudpathlib.cloudpath import implementation_registry; implementation_registry['s3'].validate_completeness()"
-      requires:
-        - pip
 
   - name: cloudpathlib-all
     requirements:
       host:
-        - pip
         - python
       run:
         - python
@@ -103,21 +99,20 @@ outputs:
     test:
       imports:
         - cloudpathlib
+      requires:
+        - pip
       commands:
         - pip check
         - python -c "from cloudpathlib.cloudpath import implementation_registry; implementation_registry['azure'].validate_completeness()"
         - python -c "from cloudpathlib.cloudpath import implementation_registry; implementation_registry['gs'].validate_completeness()"
         - python -c "from cloudpathlib.cloudpath import implementation_registry; implementation_registry['s3'].validate_completeness()"
-      requires:
-        - pip
-
 
 about:
   home: https://github.com/drivendataorg/cloudpathlib
-  summary: pathlib.Path-style classes for interacting with files in different cloud storage services.
   license: MIT
   license_file: LICENSE
   license_family: MIT
+  summary: pathlib.Path-style classes for interacting with files in different cloud storage services.
   description: |
     A Python library with classes that mimic pathlib.Path's interface for URIs from different cloud storage services.
   doc_url: https://cloudpathlib.drivendata.org/
