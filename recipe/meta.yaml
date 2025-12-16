@@ -1,13 +1,13 @@
 {% set name = "cloudpathlib" %}
-{% set version = "0.21.0" %}
+{% set version = "0.23.0" %}
 
 package:
   name: {{ name }}
   version: {{ version }}
 
 source:
-  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
-  sha256: fb8f6b890a3d37b35f0eabff86721bb8d35dfc6a6be98c1f4d34b19e989c6641
+  url: https://pypi.org/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
+  sha256: eb38a34c6b8a048ecfd2b2f60917f7cbad4a105b7c979196450c2f541f4d6b4b
 
 build:
   number: 0
@@ -41,7 +41,6 @@ outputs:
       commands:
         - pip check
         # Cannot run tests with pytest since they're not included in the source tar.
-
   - name: cloudpathlib-azure
     requirements:
       host:
@@ -60,7 +59,6 @@ outputs:
       commands:
         - pip check
         - python -c "from cloudpathlib.cloudpath import implementation_registry; implementation_registry['azure'].validate_completeness()"
-
   - name: cloudpathlib-gs
     requirements:
       host:
@@ -78,7 +76,6 @@ outputs:
       commands:
         - pip check
         - python -c "from cloudpathlib.cloudpath import implementation_registry; implementation_registry['gs'].validate_completeness()"
-
   - name: cloudpathlib-s3
     requirements:
       host:
@@ -96,7 +93,6 @@ outputs:
       commands:
         - pip check
         - python -c "from cloudpathlib.cloudpath import implementation_registry; implementation_registry['s3'].validate_completeness()"
-
   - name: cloudpathlib-all
     requirements:
       host:
