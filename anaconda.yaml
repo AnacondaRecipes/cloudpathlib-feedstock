@@ -2,3 +2,9 @@ anaconda_config_version: 1
 upstream_sources:
   - pypi:
       identifier: cloudpathlib
+    packages:
+      - cloudpathlib
+      - cloudpathlib-all
+      - cloudpathlib-azure
+      - cloudpathlib-gs
+      - cloudpathlib-s3
