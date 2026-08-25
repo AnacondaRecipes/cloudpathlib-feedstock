@@ -1,5 +1,5 @@
 {% set name = "cloudpathlib" %}
-{% set version = "0.23.0" %}
+{% set version = "0.25.0" %}
 
 package:
   name: {{ name }}
@@ -7,7 +7,7 @@ package:
 
 source:
   url: https://pypi.org/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
-  sha256: eb38a34c6b8a048ecfd2b2f60917f7cbad4a105b7c979196450c2f541f4d6b4b
+  sha256: 63612e17778c5e3a51b472def8d785d0aaaf347486d6b6786dc7be627556d4c6
 
 build:
   number: 0
@@ -40,7 +40,7 @@ outputs:
         - pip
       commands:
         - pip check
-        # Cannot run tests with pytest since they're not included in the source tar.
+  # Cannot run tests with pytest since they're not included in the source tar.
   - name: cloudpathlib-azure
     requirements:
       host:
